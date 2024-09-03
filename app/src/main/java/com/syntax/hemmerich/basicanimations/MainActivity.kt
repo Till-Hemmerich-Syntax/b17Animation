@@ -2,6 +2,7 @@ package com.syntax.hemmerich.basicanimations
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
@@ -19,12 +20,30 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnClick.setOnClickListener {
-            if(binding.edEmail.text.isEmpty()){
-                var a = AnimationUtils.loadAnimation(this,R.anim.shake)
-                binding.edEmail.startAnimation(a)
-                //binding.btnClick.startAnimation(a)
+//            if(binding.edEmail.text.isEmpty()){
+//                var a = AnimationUtils.loadAnimation(this,R.anim.shake)
+//                binding.edEmail.startAnimation(a)
+//                //binding.btnClick.startAnimation(a)
+//            }
+            binding.animationView.visibility = View.VISIBLE
+            binding.animationView.playAnimation()
+            binding.animationView.animate().apply {
+                duration= 5000
+                rotationBy(360f)
             }
+
+
+            // logging in stuff
+
+
         }
+        binding.btnStop.setOnClickListener {
+            binding.animationView.pauseAnimation()
+            binding.animationView.visibility = View.GONE
+        }
+
+
+        binding.animationView.speed = 1f
 
 //        binding.btnClick.setOnClickListener {
 //            binding.btnClick.animate().apply {
